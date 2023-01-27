@@ -1,6 +1,6 @@
 {
-	"name": "@19h47/checkbox",
-	"version": "0.0.0",
+	"name": "@19h47/disclosure-button",
+	"version": "0.0.1",
 	"description": "Disclosure button",
 	"main": "dist/main.js",
 	"scripts": {
