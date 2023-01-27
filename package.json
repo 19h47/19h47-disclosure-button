@@ -1,0 +1,56 @@
+{
+	"name": "@19h47/checkbox",
+	"version": "0.0.0",
+	"description": "Disclosure button",
+	"main": "dist/main.js",
+	"scripts": {
+		"prod": "webpack --mode=production --config webpack/webpack.config.js",
+		"dev": "webpack --mode=development --config webpack/webpack.config.js",
+		"deploy": "yarn login && yarn prod && npm publish",
+		"start": "webpack serve --config webpack/webpack.config.js --mode=development"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/19h47/19h47-disclosure-button.git"
+	},
+	"keywords": [
+		"checkbox",
+		"ES6"
+	],
+	"author": "Jérémy Levron <jeremylevron@19h47.fr> (https://19h47.fr)",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/19h47/19h47-disclosure-button/issues"
+	},
+	"homepage": "https://github.com/19h47/19h47-disclosure-button#readme",
+	"devDependencies": {
+		"@19h47/prettier-config": "^1.0.0",
+		"@babel/core": "^7.15.8",
+		"@babel/eslint-parser": "^7.15.8",
+		"@babel/eslint-plugin": "^7.12.1",
+		"@babel/plugin-proposal-class-properties": "^7.12.1",
+		"@babel/plugin-transform-runtime": "^7.15.8",
+		"@babel/preset-env": "^7.15.8",
+		"@babel/runtime": "^7.15.4",
+		"babel-loader": "^9.1.2",
+		"clean-webpack-plugin": "^4.0.0",
+		"copy-webpack-plugin": "^11.0.0",
+		"eslint": "^8.32.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-import-resolver-webpack": "^0.13.0",
+		"eslint-loader": "^4.0.2",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-node": "^11.0.0",
+		"eslint-plugin-promise": "^6.1.1",
+		"eslint-webpack-plugin": "^3.0.1",
+		"html-webpack-plugin": "5.5.0",
+		"prettier": "^2.4.1",
+		"webpack": "^5.58.2",
+		"webpack-cli": "^5.0.1",
+		"webpack-dev-server": "^4.3.1",
+		"webpack-format-messages": "^3.0.1",
+		"webpack-merge": "^5.7.3",
+		"webpack-notifier": "^1.14.0"
+	}
+}
