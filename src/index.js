@@ -39,6 +39,10 @@ class DisclosureButton {
 	}
 
 	init() {
+		this.onClick = this.onClick.bind(this);
+		this.onFocus = this.onFocus.bind(this);
+		this.onBlur = this.onBlur.bind(this);
+
 		// @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls
 		const ids = this.el
 			.getAttribute('aria-controls')
@@ -52,9 +56,9 @@ class DisclosureButton {
 	}
 
 	initEvents() {
-		this.el.addEventListener('click', () => this.onClick());
-		this.el.addEventListener('focus', () => this.onFocus());
-		this.el.addEventListener('blur', () => this.onBlur());
+		this.el.addEventListener('click', this.onClick);
+		this.el.addEventListener('focus', this.onFocus);
+		this.el.addEventListener('blur', this.onBlur);
 	}
 
 	onClick() {
@@ -80,9 +84,9 @@ class DisclosureButton {
 	}
 
 	destroy() {
-		this.el.removeEventListener('click', () => this.onClick());
-		this.el.removeEventListener('focus', () => this.onFocus());
-		this.el.removeEventListener('blur', () => this.onBlur());
+		this.el.removeEventListener('click', this.onClick);
+		this.el.removeEventListener('focus', this.onFocus);
+		this.el.removeEventListener('blur', this.onBlur);
 	}
 }
 
