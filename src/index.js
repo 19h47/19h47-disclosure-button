@@ -36,7 +36,6 @@ const toggle = $el => {
 class DisclosureButton {
 	constructor(el) {
 		this.el = el;
-		this.events = { click: 'onClick', focus: 'onFocus', blur: 'onBlur' };
 	}
 
 	init() {
@@ -78,6 +77,12 @@ class DisclosureButton {
 		}
 
 		this.elements.forEach($el => toggle($el));
+	}
+
+	destroy() {
+		this.el.removeEventListener('click', () => this.onClick());
+		this.el.removeEventListener('focus', () => this.onFocus());
+		this.el.removeEventListener('blur', () => this.onBlur());
 	}
 }
 
