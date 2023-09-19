@@ -1,7 +1,7 @@
 const toggle = $el => {
 	const style = $el.getAttribute('style');
 
-	if (-1 !== style.indexOf('display')) {
+	if (style && -1 !== style.indexOf('display')) {
 		if ('none' === $el.style.display) {
 			return $el.style.setProperty('display', 'block');
 		}
