@@ -1,6 +1,6 @@
 {
 	"name": "@19h47/disclosure-button",
-	"version": "0.0.7",
+	"version": "0.1.0",
 	"description": "Disclosure button",
 	"main": "dist/main.js",
 	"scripts": {
