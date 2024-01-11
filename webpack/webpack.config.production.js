@@ -12,9 +12,4 @@ module.exports = {
 	mode: 'production',
 	devtool: false,
 	watch: false,
-	// plugins: [
-	// 	new CopyPlugin({
-	// 		patterns: [{ from: resolve('check-box-with-check.png'), to: resolve('docs/') }],
-	// 	}),
-	// ],
 };

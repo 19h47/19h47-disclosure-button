@@ -15,22 +15,20 @@ const resolve = require('./webpack.utils');
 
 module.exports = {
 	entry: {
-		dist: resolve('src/index.js'),
-		docs: resolve('src/index.js'),
+		dist: resolve('lib/index.ts'),
+		docs: resolve('lib/index.ts'),
 	},
 	output: {
 		library: 'DisclosureButton',
 		libraryTarget: 'umd',
 		filename: '../[name]/main.js',
-
 		path: resolve('dist'),
-
 	},
 	optimization: {
 		splitChunks: {
 			// include all types of chunks
 			chunks: 'all',
-			name: 'vendors'
+			name: 'vendors',
 		},
 	},
 	devServer: {
@@ -50,9 +48,9 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
+				test: /\.tsx?$/,
+				use: 'ts-loader',
 				exclude: /node_modules/,
-				loader: 'babel-loader',
 			},
 		],
 	},
