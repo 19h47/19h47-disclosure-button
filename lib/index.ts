@@ -4,8 +4,9 @@
  * @see https://www.w3.org/TR/wai-aria-practices-1.1/#disclosure
  */
 class DisclosureButton {
-	el: Element;
+	el: HTMLElement;
 	elements: HTMLElement[] = [];
+	ids: string[] = [];
 
 	constructor(el: HTMLElement | null) {
 		this.el = el as HTMLElement;
@@ -13,12 +14,12 @@ class DisclosureButton {
 
 	init() {
 		// @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls
-		const ids = (this.el.getAttribute('aria-controls') as string)
+		this.ids = (this.el.getAttribute('aria-controls') as string)
 			.trim()
 			.split(' ')
 			.map((id: string) => `#${id.trim()}`);
 
-		this.elements = [...document.querySelectorAll<HTMLElement>(ids.join(','))];
+		this.elements = [...document.querySelectorAll<HTMLElement>(this.ids.join(','))];
 
 		this.initEvents();
 	}
