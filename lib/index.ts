@@ -54,6 +54,9 @@ class DisclosureButton {
 				if ('block' === $el.style.display) {
 					return $el.style.setProperty('display', 'none');
 				}
+				if ('none' === $el.style.display) {
+					return $el.style.setProperty('display', 'block');
+				}
 			}
 
 			if (true === JSON.parse($el.getAttribute('aria-hidden') as string)) {
