@@ -1,3 +1,32 @@
+const toggleDisplay = ($el: HTMLElement) => {
+	const style = $el.getAttribute('style');
+
+	if (style && -1 !== style.indexOf('display')) {
+		if ('block' === $el.style.display) {
+			return $el.style.setProperty('display', 'none');
+		}
+		if ('none' === $el.style.display) {
+			return $el.style.setProperty('display', 'block');
+		}
+	}
+};
+
+const toggleAriaHidden = ($el: HTMLElement) => {
+	if (false === JSON.parse($el.getAttribute('aria-hidden') as string)) {
+		$el.setAttribute('aria-hidden', 'true');
+		$el.classList.remove('is-active');
+
+		return $el.style.setProperty('pointer-events', 'none');
+	}
+
+	if (true === JSON.parse($el.getAttribute('aria-hidden') as string)) {
+		$el.setAttribute('aria-hidden', 'false');
+		$el.classList.add('is-active');
+
+		return $el.style.setProperty('pointer-events', 'auto');
+	}
+};
+
 /**
  * DisclosureButton
  *
@@ -36,7 +65,7 @@ class DisclosureButton {
 
 	onBlur = () => this.el.classList.remove('focus');
 
-	toggle() : void {
+	toggle(): void {
 		if ('true' === this.el.getAttribute('aria-expanded')) {
 			return this.close();
 		}
@@ -48,23 +77,8 @@ class DisclosureButton {
 		this.el.setAttribute('aria-expanded', 'false');
 
 		this.elements.forEach($el => {
-			const style = $el.getAttribute('style');
-
-			if (style && -1 !== style.indexOf('display')) {
-				if ('block' === $el.style.display) {
-					return $el.style.setProperty('display', 'none');
-				}
-				if ('none' === $el.style.display) {
-					return $el.style.setProperty('display', 'block');
-				}
-			}
-
-			if (true === JSON.parse($el.getAttribute('aria-hidden') as string)) {
-				$el.setAttribute('aria-hidden', 'false');
-				$el.classList.add('is-active');
-
-				return $el.style.setProperty('pointer-events', 'auto');
-			}
+			toggleDisplay($el);
+			toggleAriaHidden($el);
 		});
 	}
 
@@ -72,20 +86,7 @@ class DisclosureButton {
 		this.el.setAttribute('aria-expanded', 'true');
 
 		this.elements.forEach($el => {
-			const style = $el.getAttribute('style');
-
-			if (style && -1 !== style.indexOf('display')) {
-				if ('none' === $el.style.display) {
-					return $el.style.setProperty('display', 'block');
-				}
-			}
-
-			if (false === JSON.parse($el.getAttribute('aria-hidden') as string)) {
-				$el.setAttribute('aria-hidden', 'true');
-				$el.classList.remove('is-active');
-
-				return $el.style.setProperty('pointer-events', 'none');
-			}
+			toggleDisplay($el);
 		});
 	}
 
