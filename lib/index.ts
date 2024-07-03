@@ -1,4 +1,21 @@
-import { dispatchEvent } from './utils';
+/**
+ * Dispatch event
+ *
+ * @param {HTMLElement} target
+ * @param {object} details
+ * @param {string} name
+ */
+const dispatchEvent = (target: HTMLElement, details: object = {}, name: string = ''): boolean => {
+	const event = new CustomEvent(`disclosure-button:${name}`, {
+		bubbles: false,
+		cancelable: true,
+		detail: details,
+	});
+
+	// Dispatch the event on target.
+	return target.dispatchEvent(event);
+};
+
 
 const toggleDisplay = ($el: HTMLElement) => {
 	const style = $el.getAttribute('style');
