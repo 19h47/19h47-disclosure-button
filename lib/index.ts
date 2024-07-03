@@ -1,3 +1,5 @@
+import { dispatchEvent } from './utils';
+
 const toggleDisplay = ($el: HTMLElement) => {
 	const style = $el.getAttribute('style');
 
@@ -65,12 +67,24 @@ class DisclosureButton {
 
 	onBlur = () => this.el.classList.remove('focus');
 
-	toggle(): void {
+	toggle(): boolean {
 		if ('true' === this.el.getAttribute('aria-expanded')) {
-			return this.close();
+			this.close();
+
+			return dispatchEvent(
+				this.el,
+				{ ids: this.ids, elements: this.elements, el: this.el },
+				'close',
+			);
 		}
 
-		return this.open();
+		this.open();
+
+		return dispatchEvent(
+			this.el,
+			{ ids: this.ids, elements: this.elements, el: this.el },
+			'open',
+		);
 	}
 
 	close() {
