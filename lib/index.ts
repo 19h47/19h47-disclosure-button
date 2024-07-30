@@ -30,19 +30,19 @@ const toggleDisplay = ($el: HTMLElement) => {
 	}
 };
 
-const toggleAriaHidden = ($el: HTMLElement) => {
-	if (false === JSON.parse($el.getAttribute('aria-hidden') as string)) {
+const setAriaHiddenTrue = ($el: HTMLElement) => {
+	if ($el.hasAttribute('aria-hidden')) {
 		$el.setAttribute('aria-hidden', 'true');
 		$el.classList.remove('is-active');
-
-		return $el.style.setProperty('pointer-events', 'none');
+		$el.style.setProperty('pointer-events', 'none');
 	}
+};
 
-	if (true === JSON.parse($el.getAttribute('aria-hidden') as string)) {
+const setAriaHiddenFalse = ($el: HTMLElement) => {
+	if ($el.hasAttribute('aria-hidden')) {
 		$el.setAttribute('aria-hidden', 'false');
 		$el.classList.add('is-active');
-
-		return $el.style.setProperty('pointer-events', 'auto');
+		$el.style.setProperty('pointer-events', 'auto');
 	}
 };
 
@@ -109,7 +109,7 @@ class DisclosureButton {
 
 		this.elements.forEach($el => {
 			toggleDisplay($el);
-			toggleAriaHidden($el);
+			setAriaHiddenTrue($el);
 		});
 	}
 
@@ -118,6 +118,7 @@ class DisclosureButton {
 
 		this.elements.forEach($el => {
 			toggleDisplay($el);
+			setAriaHiddenFalse($el);
 		});
 	}
 
